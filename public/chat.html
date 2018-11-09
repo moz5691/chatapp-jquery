@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+      <nav class="navbar sticky-top navbar-light bg-light">
+          <a class="navbar-brand" href="#">Sticky</a>
+          <form class="fixed-top p-20" action="/chat.html">
+                          <!-- <span id="room-name-display"></span> -->
+              <div class="form-inline">
+                <div class="form-group">
+    
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="room"
+                    name="room"
+                    placeholder="Room name"
+                  />
+                </div>
+                <div class="form-group ">
+                  <input 
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    name="name"
+                    placeholder="Enter Name"
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary ">Submit</button>
+              </div>
+            </form>
+        </nav>
+
+
+      
+
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="m-auto" style="position:fixed;" id="users">
+      
+          </div>
+        </div>
+
+        <div class="col-sm-9 col-lg-offset-3 mb-10" id="messages-holder">
+          <ol id="messages" class="chat-messages"></ol>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-group  fixed-bottom">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Message"
+            name="body"
+            id="message"
+          />
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button" id="send-msg">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <script id="message-template" type="text/template">
+      <div>
+        <p> {{from}} | {{time}} | {{text}}</p>
+      </div>
+    </script>
+
+    <script id="get-message-template" type="text/template">
+      <div>
+        {{#.}}
+        <p> {{from}} | {{time}} | {{text}}</p>
+        {{/.}}
+      </div>
+    </script>
+
+  
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+    <script src="js/libs/mustache.js"></script>
+    <script src="js/libs/moment.js"></script>
+    <script src="js/libs/deparam.js"></script>
+    <script src="js/chat.js"></script>
+  </body>
+</html>

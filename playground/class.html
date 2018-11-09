@@ -1,0 +1,60 @@
+////////////////////
+const sendName = function(event){
+event.preventDefault();
+name = $('#name').val();
+socket.emit('new-name', {name:name});
+
+}
+/// sendMessage
+send all
+socekt.emit('new-message', {message: message, name: name, user2, user2}) like this...
+
+socket.on('new-change', funciton(newData){
+const socket1 = users[newData.user1]
+socket1.emit('emit-message', newData);
+const socket1 = users[newData.user2]
+socket2.emit('emit-message', newData);
+
+})
+
+
+$('#send-name').on('click', sendName);
+
+let name;
+let user2;
+
+socket.on('emit-user', function(data){
+if(name){
+const $select = $('<select>');
+  $select.append('<option>Select User </option>')
+  console.log(data);
+  data.forEach(elem=> $select.append(`<option>${elem}</option>`))
+  $('#select-container').empty();
+  $('#select-container').append($select)
+  }
+  })
+
+  //// start chat
+  const startChat = function(event){
+  event.preventDefault();
+  // empty chat area....
+  user2 = $('select').find(':selected').text();
+  }
+
+  $('select-container').on('change', 'select', startChat)
+
+  /// html
+  <div id="select-container"></div>
+
+
+
+
+  /// server sie...
+
+  const user = {}
+  io.on('connection', socket =>{
+  socket.on('new-name', data =>{
+  user[data.name] = socket;
+  io.emit('emit-usder', Object.keys(users))
+  })
+  })
